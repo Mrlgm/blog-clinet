@@ -2,8 +2,7 @@
   <div id="index">
     <p>首页</p>
     <div>
-      <el-button @click="onClick1">默认按钮</el-button>
-      <el-button type="info" @click="onClick2">信息按钮</el-button>
+
     </div>
   </div>
 </template>
