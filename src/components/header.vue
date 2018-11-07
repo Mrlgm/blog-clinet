@@ -53,29 +53,29 @@ header.no-login {
     //margin: 20px 5px 0;
   }
 }
-  header.login{
-    display: flex;
-    align-items: center;
-    background: @bgColor;
+header.login {
+  display: flex;
+  align-items: center;
+  background: @bgColor;
 
-    h1 {
-      color: #fff;
-      font-size: 40px;
-      margin:0;
-      padding: 0;
-      text-transform: uppercase;
-      flex: 1;
-    }
-    .edit{
-      font-size: 30px;
-      color: #fff;
-    }
-    .avatar{
-      width: 40px;
-      height: 40px;
-      border: 1px solid #fff;
-      border-radius: 50%;
-      margin-left: 15px;
-    }
+  h1 {
+    color: #fff;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    flex: 1;
   }
+  .edit {
+    font-size: 30px;
+    color: #fff;
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-left: 15px;
+  }
+}
 </style>
