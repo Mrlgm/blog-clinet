@@ -11,17 +11,32 @@
     <template v-if="isLogin">
       <h1>let's share</h1>
       <i class="edit el-icon-edit"></i>
-      <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="">
+      <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username">
     </template>
   </header>
 </template>
 
 <script>
+  import {mapState,mapGetters,mapActions} from 'vuex'
 export default {
   data() {
     return {
-      isLogin: true
+
     };
+  },
+  computed:{
+    ...mapGetters([
+      'user',
+      'isLogin'
+    ])
+  },
+  created(){
+    this.checkLogin()
+  },
+  methods:{
+    ...mapActions([
+      'checkLogin'
+    ])
   }
 };
 </script>
