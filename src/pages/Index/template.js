@@ -1,29 +1,29 @@
-import request from '@/helpers/request.js'
-import auth from '@/api/auth.js'
+import blog from '@/api/blog'
 
 export default {
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      blogs: [],
+      total: 0,
+      page: 1
     }
   },
+  created() {
+    this.page = parseInt(this.$route.query.page) || 1
+    blog.getIndexBlogs({page:this.page}).then(res => {
+      this.blogs = res.data
+      this.total = res.total
+      this.page = res.page
+    })
+  },
   methods: {
-    onClick1() {
-      this.$message.error('错了哦，这是一条错误消息');
-      request('/auth/login', 'post', {
-        username: 'hunger7',
-        password: '123456'
-      }).then(data => {
-        console.log(data)
+    onPageChange(newPage) {
+      blog.getIndexBlogs({page: newPage}).then(res => {
+        this.blogs = res.data
+        this.total = res.total
+        this.page = res.page
+        this.$router.push({path: '/', query: {page: newPage}})
       })
-    },
-    onClick2() {
-      this.$alert('这是一段内容', '标题名称', {
-        confirmButtonText: '确定',
-        callback: action => {
-          this.$message.success('点了确定');
-        }
-      });
     }
   }
-}
+};

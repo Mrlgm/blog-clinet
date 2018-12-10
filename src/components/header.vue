@@ -17,13 +17,13 @@
         <router-link to="/">let's share</router-link>
       </h1>
       <router-link to="/create">
-        <i class="edit el-icon-edit"></i>
+        <i class="edit el-icon-plus"></i>
       </router-link>
       <div class="user">
         <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username">
         <ul>
           <li>
-            <router-link to="my">我的</router-link>
+            <router-link to="/my">我的</router-link>
           </li>
           <li><a href="#" @click="onLogout">注销</a></li>
         </ul>
@@ -90,12 +90,18 @@
 
     button {
       /*//margin: 20px 5px 0;*/
-
-      a {
+      border: 1px solid #ddd;
+      background-color: #fff;
+      a{
         color: @bgColor;
-        text-decoration: none;
+      }
+      &:hover{
+        a{
+          color: #fff;
+        }
       }
     }
+    
   }
 
   header.login {
@@ -104,12 +110,14 @@
     background: @bgColor;
 
     h1 {
-      color: #fff;
       font-size: 40px;
       margin: 0;
       padding: 0;
       text-transform: uppercase;
       flex: 1;
+      a{
+        color: #fff;
+      }
     }
 
     .edit {
