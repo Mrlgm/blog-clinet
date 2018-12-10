@@ -7,14 +7,13 @@ export default {
       password: ''
     }
   },
-  methods:{
+  methods: {
     ...mapActions(['login']),
-    onLogin(){
-      this.login({username:this.username,password:this.password})
-        .then((x)=>{
-          console.log(x)
-          this.$router.push({path:'/'})
-         })
+    onLogin() {
+      this.login({username: this.username, password: this.password})
+        .then(() => {
+          this.$router.push({path: this.$route.query.redirect || '/'})
+        })
     }
   }
 }

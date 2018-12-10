@@ -4,13 +4,21 @@
       <h1>let's share</h1>
       <p>精品博客汇聚</p>
       <div class="btns">
-        <el-button><router-link to="login">立即登录</router-link></el-button>
-        <el-button><router-link to="register">立即注册</router-link></el-button>
+        <el-button>
+          <router-link to="login">立即登录</router-link>
+        </el-button>
+        <el-button>
+          <router-link to="register">立即注册</router-link>
+        </el-button>
       </div>
     </template>
     <template v-if="isLogin">
-      <h1>let's share</h1>
-      <i class="edit el-icon-edit"></i>
+      <h1>
+        <router-link to="/">let's share</router-link>
+      </h1>
+      <router-link to="/create">
+        <i class="edit el-icon-edit"></i>
+      </router-link>
       <div class="user">
         <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username">
         <ul>
@@ -25,10 +33,7 @@
 </template>
 
 <script>
-  import {mapState, mapGetters, mapActions} from 'vuex'
-  import auth from '@/api/auth'
-
-  window.auth = auth
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
     data() {
@@ -49,7 +54,9 @@
         'logout'
       ]),
       onLogout() {
-        this.logout()
+        this.logout().then(() => {
+          this.$router.push({path: '/'})
+        })
       }
     }
   };
@@ -83,7 +90,8 @@
 
     button {
       /*//margin: 20px 5px 0;*/
-      a{
+
+      a {
         color: @bgColor;
         text-decoration: none;
       }
@@ -142,7 +150,8 @@
           }
         }
       }
-      &:hover ul{
+
+      &:hover ul {
         display: block;
       }
     }
