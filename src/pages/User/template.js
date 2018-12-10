@@ -13,7 +13,6 @@ export default {
     this.userId = this.$route.params.userId
     this.page = parseInt(this.$route.query.page) || 1
     blog.getBlogsByUserId(this.userId, {page: this.page}).then(res => {
-      console.log(res)
       this.page = res.page
       this.total = res.total
       this.blogs = res.data
